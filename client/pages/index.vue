@@ -24,7 +24,8 @@
         <button type="submit" @click="sendModel" class="btn" :disabled="disableForm">Submit</button>
       </div>
     </form>
-    <pre>
+    <button @click="$router.push('/form')" class="btn">Перейти на Form</button>
+      <pre>
       {{model}}
     </pre>
     <div class="modal" v-show="modal" v-text="modalValue" :style="`border: 1px solid `+ modalColor">
