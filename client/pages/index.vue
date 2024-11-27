@@ -1,32 +1,40 @@
 <template>
   <div>
     <form @submit.prevent>
-      <custom-input id="name" label="Name" v-model="model.name" :dis="disableForm"></custom-input>
-      <custom-input id="secondName" label="Second name" v-model="model.secondName" :dis="disableForm"></custom-input>
-      <custom-input id="phone" type="text" label="Phone number" v-model="model.phone" v-mask="`+7 (###) ### ##-##`" :dis="disableForm"></custom-input>
+      <custom-input id="name" label="Name" v-model="model.name" :dis="disableForm"/>
+      <custom-input id="secondName" label="Second name" v-model="model.secondName" :dis="disableForm"/>
+      <custom-input id="phone" type="text" label="Phone number" v-model="model.phone" v-mask="`+7 (###) ### ##-##`"
+                    :dis="disableForm"/>
       <div class="radio">
-        Gender
-      <custom-radio id="one" tag="radio" label="Man" v-model="model.gender" val="Man" check="true" :dis="disableForm"></custom-radio>
-      <custom-radio id="two" tag="radio" label="Woman" val="Woman" v-model="model.gender" :dis="disableForm"></custom-radio>
-      <custom-radio id="three" tag="radio" label="They" val="They" v-model="model.gender" :dis="disableForm"></custom-radio>
-      <custom-radio id="four" tag="radio" label="It" val="It" v-model="model.gender" :dis="disableForm"></custom-radio>
+        <div>Gender</div>
+        <custom-radio id="one" tag="radio" label="Man" v-model="model.gender" val="Man" :check="true"
+                      :dis="disableForm"/>
+        <custom-radio id="two" tag="radio" label="Woman" val="Woman" v-model="model.gender"
+                      :dis="disableForm"/>
+        <custom-radio id="three" tag="radio" label="They" val="They" v-model="model.gender"
+                      :dis="disableForm"/>
+        <custom-radio id="four" tag="radio" label="It" val="It" v-model="model.gender"
+                      :dis="disableForm"/>
       </div>
       <div class="radio">
-        Show checkbox
-      <custom-radio id="one1" tag="show" label="Show" v-model="model.show" val="one"  check="true" :dis="disableForm"></custom-radio>
-      <custom-radio id="two1" tag="show" label="Hide" val="two"  v-model="model.show" :dis="disableForm"></custom-radio>
+        <div>Show checkbox</div>
+        <custom-radio id="one1" tag="show" label="Show" v-model="model.show" val="one" :check="true"
+                      :dis="disableForm"/>
+        <custom-radio id="two1" tag="show" label="Hide" val="two" v-model="model.show"
+                      :dis="disableForm"/>
       </div>
       <div v-if="model.show == `one`">
-      <input type="checkbox" id="checkbox" name="checkbox" v-model="model.gay" class="custom-checkbox" :disabled="disableForm">
-      <label for="checkbox">Gay?</label>
+        <input type="checkbox" id="checkbox" name="checkbox" v-model="model.gay" class="custom-checkbox"
+               :disabled="disableForm">
+        <label for="checkbox">Gay?</label>
       </div>
       <div>
         <button type="submit" @click="sendModel" class="btn" :disabled="disableForm">Submit</button>
       </div>
     </form>
     <button @click="$router.push('/form')" class="btn">Перейти на Form</button>
-      <pre>
-      {{model}}
+    <pre>
+      {{ model }}
     </pre>
     <div class="modal" v-show="modal" v-text="modalValue" :style="`border: 1px solid `+ modalColor">
 
@@ -36,7 +44,7 @@
 <script lang="ts">
 import {Vue, Component, Watch} from 'vue-property-decorator'
 import CustomInput from "~/components/customInput.vue";
-import CustomRadio from "~/components/сustomRedio.vue";
+import CustomRadio from "~/components/сustomRadio.vue";
 
 @Component({
   components: {CustomInput, CustomRadio},
@@ -62,8 +70,9 @@ export default class Pages extends Vue {
     if (this.validValues()) {
       console.log("Otpravleno")
       this.disableForm = true
+
       await this.$axios.post("http://localhost:4000/form/create", this.model, {})
-      //await this.$axios.post("http://localhost:4000", this.model, {})
+        //await this.$axios.post("http://localhost:4000", this.model, {})
         .then((response) => {
           this.modal = true
           this.modalValue = response.data.message
@@ -89,20 +98,21 @@ export default class Pages extends Vue {
             }
           }, 1000)
         })
-    }
-    else
-    console.log("ne Otpravleno")
+    } else
+      console.log("ne Otpravleno")
   }
-   validValues() {
+
+  validValues() {
     return (!!this.model.name.length) && (!!this.model.secondName.length) && (this.model.phone.length == 18)
-   }
-   @Watch ("model.phone")
+  }
+
+  @Watch("model.phone")
   changeModelPhone() {
     console.log(this.model.phone)
     if (this.model.phone.length <= 2) {
       return this.model.phone = "+7"
     }
-   }
+  }
 }
 </script>
 <style>
@@ -131,12 +141,14 @@ div + div {
   z-index: -1;
   opacity: 0;
 }
-.custom-checkbox+label {
+
+.custom-checkbox + label {
   display: inline-flex;
   align-items: center;
   user-select: none;
 }
-.custom-checkbox+label::before {
+
+.custom-checkbox + label::before {
   content: '';
   display: inline-block;
   width: 1em;
@@ -150,7 +162,8 @@ div + div {
   background-position: center center;
   background-size: 50% 50%;
 }
-.custom-checkbox:checked+label::before {
+
+.custom-checkbox:checked + label::before {
   border-color: #0b76ef;
   background-color: #0b76ef;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
@@ -179,17 +192,21 @@ div + div {
   vertical-align: top;
   transition: box-shadow 0.2s;
 }
+
 .btn:focus-visible {
   border: 1px solid #4c51f9;
   outline: none;
 }
+
 .btn:hover {
   transition: all 0.2s;
   box-shadow: 0 7px 14px rgb(65 132 144 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
 }
+
 .btn:active {
   background-color: #808080;
 }
+
 .btn:disabled {
   background-color: #eee;
   border-color: #eee;

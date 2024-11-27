@@ -1,23 +1,23 @@
 <template>
-  <svg-icon type="mdi" :path="path" :size="size"></svg-icon>
+  <div>
+    <svg
+      :width="size"
+      :viewBox="viewBox"
+    >
+      <path :d="path"/>
+    </svg>
+  </div>
+
 </template>
 <script lang="ts">
-//@ts-ignore
-import SvgIcon from '@jamescoyle/vue-icon';
 import {Vue, Component, Prop} from 'vue-property-decorator';
 
-@Component({
-  components: {
-    SvgIcon
-  },
-})
+@Component
 export default class customIcon extends Vue {
-  @Prop () path!: string
-  @Prop ({default: 20}) size?: number
+  @Prop() path!: string
+  @Prop({default: 20}) size?: number
+
+  readonly viewBox: string = "0 0 24 24"
 
 }
 </script>
-
-<style scoped>
-
-</style>
