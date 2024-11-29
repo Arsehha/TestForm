@@ -103,7 +103,7 @@ formRouter.post("/form/delete", async (req: express.Request | any, res: express.
         })
 
     }   catch (err) {
-        console.error("blin");
+        console.log(err);
     }
 })
 
