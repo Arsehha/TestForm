@@ -30,3 +30,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+

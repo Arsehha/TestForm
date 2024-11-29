@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div v-if="loading">Загрузка...</div>
     <div class="list" v-else>
       <div class="list--container" v-if="data.length > 0">
@@ -40,14 +40,6 @@ export default class Form extends Vue {
 
 </script>
 <style scoped>
-
-.container {
-  display: flex;
-  margin: auto;
-  justify-content: center;
-  align-items: center;
-  width: 1200px;
-}
 
 .list {
 

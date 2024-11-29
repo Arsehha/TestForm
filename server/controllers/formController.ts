@@ -107,4 +107,35 @@ formRouter.post("/form/delete", async (req: express.Request | any, res: express.
     }
 })
 
+formRouter.patch("/form/edit", async (req: express.Request | any, res: express.Response | any) => {
+   try {
+       const {id, model} = req.body
+
+       if (!(Number.isInteger(+id))) {
+           return res.status(400).send({
+               message: "Ощибка id"
+           })
+       }
+
+       const formRepository = AppDataSource.getRepository(Form)
+       const formFromDb = await formRepository.findOneBy({id})
+
+       if(!formFromDb) {
+           return res.status(400).send({
+               message: "form dont found"
+           })
+       }
+       formFromDb.name = model.name
+       formFromDb.secondName = model.secondName
+       formFromDb.phone = model.phone
+       formFromDb.gender = model.gender
+       formFromDb.gay = model.gay
+
+       await formRepository.save(formFromDb)
+       return res.send({})
+   }catch (err) {
+       console.error("Supchik");
+   }
+})
+
 export default formRouter

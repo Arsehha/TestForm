@@ -31,7 +31,7 @@
             </div>
           </transition>
         </div>
-        <button class="btn" @click="$router.push(`/form/edit/${item['id']}`)">
+        <button class="btn" @click="$router.push(`/form/edit?id=${item['id']}`)">
           <custom-icon :path="path.update"/>
         </button>
       </div>
