@@ -12,7 +12,7 @@
         <!--        <dialog :model="deleteDialog">Del</dialog>-->
         <div>
           <button class="btn" @click="deleteDialog = !deleteDialog">
-            <custom-icon :path="path.delete"/>
+            <custom-icon path="mdiDelete"/>
           </button>
           <transition name="fade">
             <div class="dialog" v-if="deleteDialog">
@@ -32,7 +32,7 @@
           </transition>
         </div>
         <button class="btn" @click="$router.push(`/form/edit?id=${item['id']}`)">
-          <custom-icon :path="path.update"/>
+          <custom-icon path="mdiPencil"/>
         </button>
       </div>
     </div>
@@ -42,17 +42,12 @@
 import {Vue, Component, Prop} from 'vue-property-decorator';
 import CustomIcon from "~/components/customIcon.vue";
 import dialog from "~/components/dialog.vue";
-import {mdiDelete, mdiPencil} from "@mdi/js";
 
 @Component({
   components: {CustomIcon, dialog},
 })
 export default class listItem extends Vue {
   @Prop() item: any;
-  path = {
-    delete: mdiDelete,
-    update: mdiPencil
-  }
   deleteDialog: boolean = false
   deleteLoading: boolean = false
 

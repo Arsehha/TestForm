@@ -1,0 +1,18 @@
+/* DISPLAY LAYOUT */
+.d-block          { display: block; }
+.d-flex           { display: flex; }
+.d-grid           { display: grid; }
+.d-none           { display: none; }
+.d-inline-block   { display: inline-block; }
+.d-inline-flex    { display: inline-flex; }
+
+/* overflow */
+.overflow-auto      { overflow: auto; }
+.overflow-hidden    { overflow: hidden; }
+.overflow-visible   { overflow: visible; }
+.overflow-x-auto    { overflow-inline: auto; }
+.overflow-x-hidden  { overflow-inline: hidden; }
+.overflow-x-visible { overflow-inline: visible; }
+.overflow-y-auto    { overflow-block: auto; }
+.overflow-y-hidden  { overflow-block: hidden; }
+.overflow-y-visible { overflow-block: visible; }

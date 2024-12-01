@@ -1,0 +1,43 @@
+/* font-italic */
+.font-italic { font-style: italic; }
+
+/* font-weight */
+.font-weight-thin     { font-weight: 100; }
+.font-weight-light    { font-weight: 300; }
+.font-weight-regular  { font-weight: 400; }
+.font-weight-medium   { font-weight: 500; }
+.font-weight-bold     { font-weight: 700; }
+.font-weight-black    { font-weight: 900; }
+
+/* text-align */
+.text-start    { text-align: start; }
+.text-center   { text-align: center; }
+.text-end      { text-align: end;  }
+.text-justify  { text-align: justify; }
+
+/* text-decoration */
+.text-decoration-none         { text-decoration: none; }
+.text-decoration-line-through { text-decoration: line-through; }
+.text-decoration-overline     { text-decoration: overline; }
+.text-decoration-underline    { text-decoration: underline; }
+
+
+/* text-transform */
+.text-transform-none  { text-transform: none; }
+.text-uppercase       { text-transform: uppercase; }
+.text-lowercase       { text-transform: lowercase; }
+.text-capitalize      { text-transform: capitalize; }
+
+/* text-wrap */
+.text-wrap            { text-wrap: wrap;}
+.text-nowrap          { text-wrap: nowrap; }
+.text-balance         { text-wrap: balance; }
+.text-pretty          { text-wrap: pretty; }
+.text-stable          { text-wrap: stable; }
+
+/* trucant */
+.text-trucant {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}

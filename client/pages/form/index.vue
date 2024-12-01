@@ -39,14 +39,3 @@ export default class Form extends Vue {
 }
 
 </script>
-<style scoped>
-
-.list {
-
-}
-
-.list--container {
-
-}
-
-</style>
