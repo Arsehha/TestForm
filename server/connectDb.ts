@@ -1,6 +1,8 @@
 import 'reflect-metadata'
-import { DataSource } from 'typeorm'
 import config from './config'
+import logger from "./modules/logger"
+import {Form} from "./entity"
+import {DataSource} from 'typeorm'
 
 export const AppDataSource: DataSource = new DataSource({
     type: config.DB_TYPE,
@@ -9,17 +11,17 @@ export const AppDataSource: DataSource = new DataSource({
     username: config.DB_USERNAME,
     password: config.DB_PASSWORD,
     database: config.DB_DATABASE,
-    entities: ["./entity/**/*.ts"],
+    // entities: ["./entity/**/*.ts"],
+    entities: [Form],
     synchronize: true,
     logging: false,
 })
 
-export function connectDataBase() {
-    AppDataSource.initialize()
-        .then(() => {
-            console.log('db connected')
-        })
-        .catch((error: any) => {
-            console.log(`DataBase error:, ${error}`)
-        })
+export default function connectDataBase() {
+    try {
+        AppDataSource.initialize()
+        logger.info('\x1b[34m%s\x1b[0m', '=> DB Connected!')
+    } catch (error) {
+        logger.error('\x1b[31m%s\x1b[0m', `=> ❌  Server error: ${error}`);
+    }
 }
