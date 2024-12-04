@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "dc up": "docker-compose up",
+    "dc stop": "docker-compose stop"
+  }
+}
