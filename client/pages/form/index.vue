@@ -18,7 +18,7 @@ import listItem from "~/components/listItem.vue";
   components: {CustomIcon, listItem}
 })
 export default class Form extends Vue {
-  all: string = "http://localhost:4000/form/get-all"
+  all: string = "/api/form/get-all"
   data = []
   loading: boolean = true
 

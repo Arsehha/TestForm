@@ -66,7 +66,7 @@ export default class listItem extends Vue {
 
   async startDelete(id: number) {
     this.deleteLoading = true
-    await this.$axios.post(`http://localhost:4000/form/delete`, {id})
+    await this.$axios.post(`/api/form/delete`, {id})
       .then((response) =>{
         console.log(response.data)
         this.deleteDialog = false

@@ -86,7 +86,7 @@ export default class Pages extends Vue {
   modalTimer: number = 0
 
   async mounted() {
-    await this.$axios.get(`http://localhost:4000/form/get/` + this.getId())
+    await this.$axios.get(`/api/form/get/` + this.getId())
       .then((response) => {
         if (!response.data.fromDb) {
           this.$router.push("/")
@@ -107,11 +107,11 @@ export default class Pages extends Vue {
       console.log("Otpravleno")
       this.disableForm = true
 
-      await this.$axios.patch("http://localhost:4000/form/edit", {
+      await this.$axios.patch("/api/form/edit", {
         id: this.getId(),
         model: this.model
       }, {})
-        //await this.$axios.post("http://localhost:4000", this.model, {})
+        //await this.$axios.post("/api", this.model, {})
         .then((response) => {
           this.modal = true
           console.log(response.data)

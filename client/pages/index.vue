@@ -96,8 +96,8 @@ export default class Pages extends Vue {
       console.log("Otpravleno")
       this.disableForm = true
 
-      await this.$axios.post("http://localhost:4000/form/create", this.model, {})
-        //await this.$axios.post("http://localhost:4000", this.model, {})
+      await this.$axios.post("/api/form/create", this.model, {})
+        //await this.$axios.post("/api", this.model, {})
         .then((response) => {
           this.modal = true
           this.modalValue = response.data.message

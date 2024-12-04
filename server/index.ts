@@ -11,9 +11,9 @@ const port = config.port
 
 connectDataBase()
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors());
 
 app.listen(port, () => {
     try {
@@ -24,5 +24,5 @@ app.listen(port, () => {
     }
 })
 
-app.use(controller)
+app.use('/api/', controller)
 

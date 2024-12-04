@@ -1,5 +1,10 @@
+const is_prod = false
+
+const port = 4000
+const link = is_prod ? 'http://31.129.98.120' : 'http://localhost'
+const serverLink = link + ':' + port + '/api/'
+
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     htmlAttrs: {
       lang: 'ru',
@@ -16,48 +21,41 @@ export default {
     ]
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     "assets/main.css",
     "assets/markupLayout/index.css"
   ],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: `@/plugins/v-mask`}
   ],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
+    proxy: true
   },
 
-  // PWA module configuration: https://go.nuxtjs.dev/pwa
+  proxy: {
+    '/api/': {target: serverLink, pathRewrite: {'^/api/': ''}},
+  },
+
   pwa: {
     manifest: {
       lang: 'ru'
     }
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
 }
