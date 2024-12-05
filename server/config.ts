@@ -14,7 +14,7 @@ const config: any = {
 export default config
 
 function dbHost(): string {
-    return is_prod ? 'localhost' : 'localhost'
+    return is_prod ? '31.129.98.120' : 'localhost'
 }
 
 function dbUsername(): string {
