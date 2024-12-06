@@ -21,6 +21,10 @@ export default {
     ]
   },
 
+  server: {
+    port: 3000
+  },
+
   css: [
     "assets/main.css",
     "assets/markupLayout/index.css"
