@@ -1,7 +1,7 @@
 <template>
   <div class="list_item" @click="route(item[`id`])">
     <div class="list_item--container">
-      <div class="list_item--value">{{ item["id"] }}</div>
+      <div class="list_item--value">{{ slotId }}</div>
       <div class="list_item--value">{{ item["name"] }}</div>
       <div class="list_item--value">{{ item["secondName"] }}</div>
       <div class="list_item--value">{{ item["phone"] }}</div>
@@ -47,7 +47,8 @@ import dialog from "~/components/dialog.vue";
   components: {CustomIcon, dialog},
 })
 export default class listItem extends Vue {
-  @Prop() item: any;
+  @Prop() item: any
+  @Prop() slotId?: number
   deleteDialog: boolean = false
   deleteLoading: boolean = false
 

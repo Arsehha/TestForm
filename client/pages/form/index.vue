@@ -3,7 +3,7 @@
     <div v-if="loading">Загрузка...</div>
     <div class="list" v-else>
       <div class="list--container" v-if="data.length > 0">
-        <list-item v-for="(item, index) in data" :key="index" :item="item" @refreshItems="initItems"/>
+        <list-item v-for="(item, index) in data" :key="index" :slot-id="index" :item="item" @refreshItems="initItems"/>
       </div>
       <div class="list--container" v-else>Ничего нет</div>
     </div>
