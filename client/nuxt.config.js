@@ -4,6 +4,8 @@ const port = 4000
 const link = is_prod ? 'http://31.129.98.120' : 'http://localhost'
 const serverLink = link + ':' + port + '/api/'
 
+const host = is_prod ? '31.129.98.120' : '0.0.0.0'
+
 export default {
   head: {
     htmlAttrs: {
@@ -22,6 +24,7 @@ export default {
   },
 
   server: {
+    host: host,
     port: 3000
   },
 
