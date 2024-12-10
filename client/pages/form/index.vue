@@ -3,7 +3,11 @@
     <div v-if="loading">Загрузка...</div>
     <div class="list" v-else>
       <div class="list--container" v-if="data.length > 0">
-        <list-item v-for="(item, index) in data" :key="index" :slot-id="index" :item="item" @refreshItems="initItems"/>
+        <list-item v-for="(item, index) in data"
+                   :key="index"
+                   :item="item"
+                   :slot-id="index + 1"
+                   @refreshItems="initItems"/>
       </div>
       <div class="list--container" v-else>Ничего нет</div>
     </div>
@@ -27,7 +31,7 @@ export default class Form extends Vue {
   }
 
   async initItems() {
-    this.data= []
+    this.data = []
     await this.$axios.get(this.all, {})
       .then((response) => {
         this.data = response.data.data;

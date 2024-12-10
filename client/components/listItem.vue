@@ -8,6 +8,7 @@
       <div class="list_item--value">{{ item["gender"] }}</div>
       <div class="list_item--value">{{ item["gay"] ? "Да" : "Нет" }}</div>
       <div class="list_item--value">{{ getDate(item["created"]) }}</div>
+      <div style="flex: 1 0 auto;"/>
       <div class="list_item--value" @click.stop style="display: flex;">
         <!--        <dialog :model="deleteDialog">Del</dialog>-->
         <div>
